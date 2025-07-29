@@ -7,7 +7,12 @@ async function createNewAgent(req, res) {
     if (existingAgent) {
       return res.status(409).json({ msg: "Agent already exists" });
     }
-    const agent = Agent.createOne({ username, email, password, phone_number });
+    const agent = await Agent.create({
+      username,
+      email,
+      password,
+      phone_number,
+    });
     console.log(agent);
     return res.status(201).json({ msg: "Agent Created Successfully" });
   } catch (err) {
