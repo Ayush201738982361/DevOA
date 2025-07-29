@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
-const secretKey = "SecretKey@2024"; //Hardcoded as of now
+require("dotenv").config();
+const secretKey = process.env.SECRET_KEY;
 
 function setUserToken(user) {
   const payload = {
