@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
+const User = require("../model/user");
 
 async function createNewUser(req, res) {
   const { username, email, password } = req.body;
   try {
-    const userdetails = await mongoose.create({
+    const userdetails = await User.create({
       username,
       email,
       password,
     });
-    if (res.status === 201) {
-      return r;
-    }
-    console.log("User Created:", userdetails);
+    res.status(200).json({ msg: "User Created" });
   } catch (err) {
     console.log(`Error In Creating User : ${err}`);
   }
